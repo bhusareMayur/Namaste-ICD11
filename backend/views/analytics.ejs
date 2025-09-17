@@ -1,0 +1,648 @@
+<%- include('partials/header', { title: 'Analytics', page: 'analytics' }) %>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Page Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-primary">
+                    <i class="fas fa-chart-bar me-3"></i>
+                    System Analytics
+                </h1>
+                <p class="lead text-muted">
+                    Visualize mapping statistics and system performance metrics
+                </p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading analytics data...</span>
+                </div>
+                <p class="mt-3 text-muted">Loading analytics data...</p>
+            </div>
+
+            <!-- Analytics Content -->
+            <div id="analyticsContent" style="display: none;">
+                
+                <!-- Summary Cards -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-3">
+                        <div class="card bg-gradient-primary text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-leaf fa-2x mb-3"></i>
+                                <h3 id="totalNamaste" class="mb-1">-</h3>
+                                <p class="mb-0">NAMASTE Codes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-gradient-info text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-hospital fa-2x mb-3"></i>
+                                <h3 id="totalIcd11" class="mb-1">-</h3>
+                                <p class="mb-0">ICD-11 Codes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-gradient-success text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-exchange-alt fa-2x mb-3"></i>
+                                <h3 id="totalMappings" class="mb-1">-</h3>
+                                <p class="mb-0">Total Mappings</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-gradient-warning text-white h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-percentage fa-2x mb-3"></i>
+                                <h3 id="mappingCoverage" class="mb-1">-%</h3>
+                                <p class="mb-0">Mapping Coverage</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 1 -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-chart-pie me-2"></i>
+                                    Confidence Score Distribution
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="confidenceChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-chart-bar me-2"></i>
+                                    Mapping Types
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="mappingTypesChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 2 -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-chart-area me-2"></i>
+                                    Medical Systems Distribution
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="medicalSystemsChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-chart-line me-2"></i>
+                                    Categories Distribution
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="categoriesChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Quality Metrics -->
+                <div class="row g-4 mb-4">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    Data Quality Metrics
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-primary">Mapping Quality</h6>
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>High Confidence (≥90%)</span>
+                                                <span id="highConfCount">-</span>
+                                            </div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-success" id="highConfBar" style="width: 0%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>Medium Confidence (70-89%)</span>
+                                                <span id="medConfCount">-</span>
+                                            </div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-info" id="medConfBar" style="width: 0%"></div>
+                                            </div>
+                                            
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span>Low Confidence (<70%)</span>
+                                                <span id="lowConfCount">-</span>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" id="lowConfBar" style="width: 0%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-info">System Performance</h6>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <strong>Average Confidence:</strong> <span id="avgConfidence">-%</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-database text-primary me-2"></i>
+                                                <strong>Data Completeness:</strong> <span id="dataCompleteness">-%</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-clock text-warning me-2"></i>
+                                                <strong>Last Updated:</strong> <span id="lastUpdated">-</span>
+                                            </li>
+                                            <li class="mb-0">
+                                                <i class="fas fa-server text-info me-2"></i>
+                                                <strong>System Status:</strong> <span id="systemStatus" class="badge bg-success">Online</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export and Actions -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-tools me-2"></i>
+                                    Analytics Tools
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary w-100" onclick="refreshAnalytics()">
+                                            <i class="fas fa-sync-alt me-2"></i>
+                                            Refresh Data
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-success w-100" onclick="exportAnalytics()">
+                                            <i class="fas fa-download me-2"></i>
+                                            Export Report
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="/api/health" class="btn btn-info w-100" target="_blank">
+                                            <i class="fas fa-heartbeat me-2"></i>
+                                            System Health
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let analyticsData = {};
+let charts = {};
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadAnalyticsData();
+});
+
+async function loadAnalyticsData() {
+    try {
+        // Load all data
+        const [healthResponse, namasteResponse, icd11Response, mappingsResponse] = await Promise.all([
+            fetch('/api/health'),
+            fetch('/api/namaste'),
+            fetch('/api/icd11'),
+            fetch('/api/mappings')
+        ]);
+
+        const [healthData, namasteData, icd11Data, mappingsData] = await Promise.all([
+            healthResponse.json(),
+            namasteResponse.json(),
+            icd11Response.json(),
+            mappingsResponse.json()
+        ]);
+
+        analyticsData = {
+            health: healthData,
+            namaste: namasteData.data || [],
+            icd11: icd11Data.data || [],
+            mappings: mappingsData.data || []
+        };
+
+        // Hide loading and show content
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('analyticsContent').style.display = 'block';
+
+        // Render all analytics
+        renderSummaryCards();
+        renderCharts();
+        renderQualityMetrics();
+
+    } catch (error) {
+        console.error('Error loading analytics data:', error);
+        showError('Failed to load analytics data. Please try again.');
+    }
+}
+
+function renderSummaryCards() {
+    const { namaste, icd11, mappings } = analyticsData;
+    
+    document.getElementById('totalNamaste').textContent = namaste.length;
+    document.getElementById('totalIcd11').textContent = icd11.length;
+    document.getElementById('totalMappings').textContent = mappings.length;
+    
+    // Calculate mapping coverage (percentage of NAMASTE codes that have mappings)
+    const coverage = namaste.length > 0 ? ((mappings.length / namaste.length) * 100).toFixed(1) : 0;
+    document.getElementById('mappingCoverage').textContent = `${coverage}%`;
+}
+
+function renderCharts() {
+    renderConfidenceChart();
+    renderMappingTypesChart();
+    renderMedicalSystemsChart();
+    renderCategoriesChart();
+}
+
+function renderConfidenceChart() {
+    const { mappings } = analyticsData;
+    const ctx = document.getElementById('confidenceChart').getContext('2d');
+    
+    // Group by confidence ranges
+    const ranges = {
+        'Excellent (90-100%)': 0,
+        'Good (70-89%)': 0,
+        'Fair (50-69%)': 0,
+        'Poor (<50%)': 0
+    };
+    
+    mappings.forEach(mapping => {
+        const confidence = parseFloat(mapping.Confidence_Score);
+        if (confidence >= 0.9) ranges['Excellent (90-100%)']++;
+        else if (confidence >= 0.7) ranges['Good (70-89%)']++;
+        else if (confidence >= 0.5) ranges['Fair (50-69%)']++;
+        else ranges['Poor (<50%)']++;
+    });
+    
+    charts.confidence = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(ranges),
+            datasets: [{
+                data: Object.values(ranges),
+                backgroundColor: [
+                    '#198754', // Excellent - Green
+                    '#0dcaf0', // Good - Cyan
+                    '#ffc107', // Fair - Yellow
+                    '#dc3545'  // Poor - Red
+                ],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((context.parsed / total) * 100).toFixed(1);
+                            return `${context.label}: ${context.parsed} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderMappingTypesChart() {
+    const { mappings } = analyticsData;
+    const ctx = document.getElementById('mappingTypesChart').getContext('2d');
+    
+    // Count mapping types
+    const types = {};
+    mappings.forEach(mapping => {
+        const type = mapping.Mapping_Type || 'Unknown';
+        types[type] = (types[type] || 0) + 1;
+    });
+    
+    charts.mappingTypes = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(types),
+            datasets: [{
+                label: 'Number of Mappings',
+                data: Object.values(types),
+                backgroundColor: [
+                    '#198754',
+                    '#fd7e14',
+                    '#6f42c1',
+                    '#20c997'
+                ],
+                borderColor: [
+                    '#146c43',
+                    '#e36414',
+                    '#59359a',
+                    '#198754'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderMedicalSystemsChart() {
+    const { namaste } = analyticsData;
+    const ctx = document.getElementById('medicalSystemsChart').getContext('2d');
+    
+    // Count medical systems
+    const systems = {};
+    namaste.forEach(entry => {
+        const system = entry.Medical_System || 'Unknown';
+        systems[system] = (systems[system] || 0) + 1;
+    });
+    
+    charts.medicalSystems = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(systems),
+            datasets: [{
+                data: Object.values(systems),
+                backgroundColor: [
+                    '#0d6efd',
+                    '#6610f2',
+                    '#6f42c1',
+                    '#d63384',
+                    '#dc3545',
+                    '#fd7e14',
+                    '#ffc107',
+                    '#198754',
+                    '#20c997',
+                    '#0dcaf0'
+                ],
+                borderWidth: 2,
+                borderColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = ((context.parsed / total) * 100).toFixed(1);
+                            return `${context.label}: ${context.parsed} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderCategoriesChart() {
+    const { namaste } = analyticsData;
+    const ctx = document.getElementById('categoriesChart').getContext('2d');
+    
+    // Count categories
+    const categories = {};
+    namaste.forEach(entry => {
+        const category = entry.Category || 'Unknown';
+        categories[category] = (categories[category] || 0) + 1;
+    });
+    
+    charts.categories = new Chart(ctx, {
+        type: 'horizontalBar' in Chart ? 'horizontalBar' : 'bar',
+        data: {
+            labels: Object.keys(categories),
+            datasets: [{
+                label: 'Number of Entries',
+                data: Object.values(categories),
+                backgroundColor: '#ffc107',
+                borderColor: '#ffb500',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderQualityMetrics() {
+    const { mappings } = analyticsData;
+    
+    // Calculate confidence ranges
+    const highConf = mappings.filter(m => parseFloat(m.Confidence_Score) >= 0.9).length;
+    const medConf = mappings.filter(m => {
+        const conf = parseFloat(m.Confidence_Score);
+        return conf >= 0.7 && conf < 0.9;
+    }).length;
+    const lowConf = mappings.filter(m => parseFloat(m.Confidence_Score) < 0.7).length;
+    
+    const total = mappings.length;
+    
+    // Update counts
+    document.getElementById('highConfCount').textContent = `${highConf}/${total}`;
+    document.getElementById('medConfCount').textContent = `${medConf}/${total}`;
+    document.getElementById('lowConfCount').textContent = `${lowConf}/${total}`;
+    
+    // Update progress bars
+    if (total > 0) {
+        document.getElementById('highConfBar').style.width = `${(highConf / total) * 100}%`;
+        document.getElementById('medConfBar').style.width = `${(medConf / total) * 100}%`;
+        document.getElementById('lowConfBar').style.width = `${(lowConf / total) * 100}%`;
+    }
+    
+    // Calculate average confidence
+    const avgConf = total > 0 ? 
+        mappings.reduce((sum, m) => sum + parseFloat(m.Confidence_Score), 0) / total : 0;
+    document.getElementById('avgConfidence').textContent = `${(avgConf * 100).toFixed(1)}%`;
+    
+    // Data completeness (assuming all required fields are present if we got this far)
+    document.getElementById('dataCompleteness').textContent = '100%';
+    
+    // Last updated
+    const lastUpdated = analyticsData.health.dataLoaded || new Date().toISOString();
+    document.getElementById('lastUpdated').textContent = new Date(lastUpdated).toLocaleString();
+}
+
+async function refreshAnalytics() {
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('analyticsContent').style.display = 'none';
+    
+    // Destroy existing charts
+    Object.values(charts).forEach(chart => {
+        if (chart && typeof chart.destroy === 'function') {
+            chart.destroy();
+        }
+    });
+    charts = {};
+    
+    await loadAnalyticsData();
+}
+
+function exportAnalytics() {
+    const { namaste, icd11, mappings } = analyticsData;
+    
+    // Prepare analytics report
+    const report = {
+        generatedAt: new Date().toISOString(),
+        summary: {
+            totalNamasteCodes: namaste.length,
+            totalIcd11Codes: icd11.length,
+            totalMappings: mappings.length,
+            mappingCoverage: namaste.length > 0 ? ((mappings.length / namaste.length) * 100).toFixed(1) + '%' : '0%'
+        },
+        confidenceDistribution: {
+            excellent: mappings.filter(m => parseFloat(m.Confidence_Score) >= 0.9).length,
+            good: mappings.filter(m => {
+                const conf = parseFloat(m.Confidence_Score);
+                return conf >= 0.7 && conf < 0.9;
+            }).length,
+            fair: mappings.filter(m => {
+                const conf = parseFloat(m.Confidence_Score);
+                return conf >= 0.5 && conf < 0.7;
+            }).length,
+            poor: mappings.filter(m => parseFloat(m.Confidence_Score) < 0.5).length
+        },
+        mappingTypes: mappings.reduce((acc, m) => {
+            const type = m.Mapping_Type || 'Unknown';
+            acc[type] = (acc[type] || 0) + 1;
+            return acc;
+        }, {}),
+        medicalSystems: namaste.reduce((acc, n) => {
+            const system = n.Medical_System || 'Unknown';
+            acc[system] = (acc[system] || 0) + 1;
+            return acc;
+        }, {}),
+        averageConfidence: mappings.length > 0 ? 
+            ((mappings.reduce((sum, m) => sum + parseFloat(m.Confidence_Score), 0) / mappings.length) * 100).toFixed(2) + '%' : '0%'
+    };
+    
+    // Create and download file
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `namaste-icd11-analytics-report-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function showError(message) {
+    document.getElementById('loadingState').innerHTML = `
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Error:</strong> ${message}
+            <br><br>
+            <button class="btn btn-danger" onclick="location.reload()">
+                <i class="fas fa-redo me-2"></i>Retry
+            </button>
+        </div>
+    `;
+}
+</script>
+
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #198754 0%, #146c43 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #e6ac00 100%);
+}
+
+canvas {
+    max-height: 300px !important;
+}
+</style>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,131 @@
+ICD11_Code,Title,Module,Category,Code_Type,Parent_Code,Dual_Code_Partner
+XM01A0,Fever pattern in traditional medicine,TM2,General symptoms,Traditional_Medicine,XM00,8A43
+8A43,Fever unspecified,MMS,General symptoms,Biomedicine,8A4,XM01A0
+XM01A1,Cough pattern in traditional medicine,TM2,Respiratory patterns,Traditional_Medicine,XM00,CA80
+CA80,Cough,MMS,Respiratory system,Biomedicine,CA8,XM01A1
+XM01A2,Breathing difficulty pattern in traditional medicine,TM2,Respiratory patterns,Traditional_Medicine,XM00,MD11.0
+MD11.0,Dyspnoea,MMS,Respiratory system,Biomedicine,MD11,XM01A2
+XM02A0,Acid-peptic disorder pattern in traditional medicine,TM2,Digestive patterns,Traditional_Medicine,XM00,DA90
+DA90,Functional dyspepsia,MMS,Digestive system,Biomedicine,DA9,XM02A0
+XM02A1,Intestinal disorder pattern in traditional medicine,TM2,Digestive patterns,Traditional_Medicine,XM00,DD91.0
+DD91.0,Irritable bowel syndrome,MMS,Digestive system,Biomedicine,DD91,XM02A1
+XM02A2,Hemorrhoid pattern in traditional medicine,TM2,Digestive patterns,Traditional_Medicine,XM00,DB30
+DB30,Internal haemorrhoids,MMS,Digestive system,Biomedicine,DB3,XM02A2
+XM03A0,Diabetes pattern in traditional medicine,TM2,Metabolic patterns,Traditional_Medicine,XM00,5A11
+5A11,Type 2 diabetes mellitus,MMS,Endocrine system,Biomedicine,5A1,XM03A0
+XM03A1,Heart disease pattern in traditional medicine,TM2,Circulatory patterns,Traditional_Medicine,XM00,BA00
+BA00,Heart disease,MMS,Circulatory system,Biomedicine,BA0,XM03A1
+XM04A0,Headache pattern in traditional medicine,TM2,Nervous system patterns,Traditional_Medicine,XM00,8A80.1
+8A80.1,Headache unspecified,MMS,Nervous system,Biomedicine,8A80,XM04A0
+XM04A1,Joint disorder pattern in traditional medicine,TM2,Musculoskeletal patterns,Traditional_Medicine,XM00,FA20.0
+FA20.0,Knee osteoarthritis,MMS,Musculoskeletal system,Biomedicine,FA20,XM04A1
+XM04A2,Rheumatic disorder pattern in traditional medicine,TM2,Musculoskeletal patterns,Traditional_Medicine,XM00,FA20.1
+FA20.1,Rheumatoid arthritis,MMS,Musculoskeletal system,Biomedicine,FA20,XM04A2
+XM05A0,Hepatic-splenic disorder pattern in traditional medicine,TM2,Hepatic patterns,Traditional_Medicine,XM00,DB90
+DB90,Hepatomegaly,MMS,Digestive system,Biomedicine,DB9,XM05A0
+XM05A1,Urinary disorder pattern in traditional medicine,TM2,Renal patterns,Traditional_Medicine,XM00,GC08
+GC08,Urinary retention,MMS,Genitourinary system,Biomedicine,GC0,XM05A1
+XM06A0,Menstrual disorder pattern in traditional medicine,TM2,Reproductive patterns,Traditional_Medicine,XM00,GA34.4
+GA34.4,Heavy menstrual bleeding,MMS,Genitourinary system,Biomedicine,GA34,XM06A0
+XM06A1,Male reproductive disorder pattern in traditional medicine,TM2,Reproductive patterns,Traditional_Medicine,XM00,HA00
+HA00,Erectile dysfunction,MMS,Genitourinary system,Biomedicine,HA0,XM06A1
+XM07A0,Skin disorder pattern in traditional medicine,TM2,Dermatological patterns,Traditional_Medicine,XM00,EK90
+EK90,Skin disorder unspecified,MMS,Skin conditions,Biomedicine,EK9,XM07A0
+XM07A1,Eye disorder pattern in traditional medicine,TM2,Sensory patterns,Traditional_Medicine,XM00,9A60
+9A60,Eye disease unspecified,MMS,Eye disorders,Biomedicine,9A6,XM07A1
+XM07A2,Ear disorder pattern in traditional medicine,TM2,Sensory patterns,Traditional_Medicine,XM00,AB30
+AB30,Ear disease unspecified,MMS,Ear disorders,Biomedicine,AB3,XM07A2
+XM08A0,Mental disorder pattern in traditional medicine,TM2,Psychiatric patterns,Traditional_Medicine,XM00,6A20
+6A20,Schizophrenia,MMS,Mental disorders,Biomedicine,6A2,XM08A0
+XM08A1,Epilepsy pattern in traditional medicine,TM2,Nervous patterns,Traditional_Medicine,XM00,8A05
+8A05,Epilepsy,MMS,Nervous system,Biomedicine,8A0,XM08A1
+XM08A2,Hemiplegia pattern in traditional medicine,TM2,Neurological patterns,Traditional_Medicine,XM00,8A17
+8A17,Hemiplegia,MMS,Nervous system,Biomedicine,8A1,XM08A2
+XM08A3,Parkinsonism pattern in traditional medicine,TM2,Movement patterns,Traditional_Medicine,XM00,8A00.0
+8A00.0,Parkinson disease,MMS,Nervous system,Biomedicine,8A00,XM08A3
+XM09A0,Obesity pattern in traditional medicine,TM2,Metabolic patterns,Traditional_Medicine,XM00,5B80
+5B80,Obesity,MMS,Endocrine system,Biomedicine,5B8,XM09A0
+XM09A1,Underweight pattern in traditional medicine,TM2,Nutrition patterns,Traditional_Medicine,XM00,5B40
+5B40,Malnutrition,MMS,Endocrine system,Biomedicine,5B4,XM09A1
+XM09A2,Bleeding disorder pattern in traditional medicine,TM2,Hematological patterns,Traditional_Medicine,XM00,3A20
+3A20,Bleeding disorder unspecified,MMS,Blood disorders,Biomedicine,3A2,XM09A2
+XM09A3,Anemia pattern in traditional medicine,TM2,Hematological patterns,Traditional_Medicine,XM00,3A00
+3A00,Iron deficiency anemia,MMS,Blood disorders,Biomedicine,3A0,XM09A3
+XM09A4,Jaundice pattern in traditional medicine,TM2,Hepatic patterns,Traditional_Medicine,XM00,DA14
+DA14,Viral hepatitis,MMS,Digestive system,Biomedicine,DA1,XM09A4
+XM09A5,Abdominal disorder pattern in traditional medicine,TM2,Gastrointestinal patterns,Traditional_Medicine,XM00,DUMMY001
+DUMMY001,Abdominal disease placeholder,MMS,Digestive system,Biomedicine,DUMMY001,XM09A5
+XM09A6,Diarrhea pattern in traditional medicine,TM2,Gastrointestinal patterns,Traditional_Medicine,XM00,DD70
+DD70,Diarrhoea,MMS,Digestive system,Biomedicine,DD7,XM09A6
+XM09A7,Constipation pattern in traditional medicine,TM2,Gastrointestinal patterns,Traditional_Medicine,XM00,DD50
+DD50,Constipation,MMS,Digestive system,Biomedicine,DD5,XM09A7
+XM09A8,Abdominal tumor pattern in traditional medicine,TM2,Abdominal masses,Traditional_Medicine,XM00,DA91
+DA91,Abdominal mass,MMS,Digestive system,Biomedicine,DA9,XM09A8
+XM09A9,Flatulence pattern in traditional medicine,TM2,Gas disorders,Traditional_Medicine,XM00,DUMMY002
+DUMMY002,Flatulence placeholder,MMS,Digestive system,Biomedicine,DUMMY002,XM09A9
+XM10A0,Hiccup pattern in traditional medicine,TM2,Reflex patterns,Traditional_Medicine,XM00,MD12
+MD12,Hiccup,MMS,Respiratory system,Biomedicine,MD1,XM10A0
+XM10A1,Tuberculosis pattern in traditional medicine,TM2,Respiratory infections,Traditional_Medicine,XM00,CA40
+CA40,Tuberculosis of lung,MMS,Infectious diseases,Biomedicine,CA4,XM10A1
+XM10A2,Wasting disorder pattern in traditional medicine,TM2,Degenerative patterns,Traditional_Medicine,XM00,DUMMY003
+DUMMY003,Wasting disease placeholder,MMS,General,Biomedicine,DUMMY003,XM10A2
+XM10A3,Edema pattern in traditional medicine,TM2,Fluid retention patterns,Traditional_Medicine,XM00,MG50
+MG50,Oedema,MMS,Circulatory system,Biomedicine,MG5,XM10A3
+XM10A4,Gout pattern in traditional medicine,TM2,Crystal arthropathy patterns,Traditional_Medicine,XM00,FA92
+FA92,Gout,MMS,Musculoskeletal system,Biomedicine,FA9,XM10A4
+XM10A5,Sciatica pattern in traditional medicine,TM2,Nerve compression patterns,Traditional_Medicine,XM00,8B94
+8B94,Sciatica,MMS,Nervous system,Biomedicine,8B9,XM10A5
+XM10A6,Cholera pattern in traditional medicine,TM2,Acute diarrheal patterns,Traditional_Medicine,XM00,1A40
+1A40,Cholera,MMS,Infectious diseases,Biomedicine,1A4,XM10A6
+XM10A7,Indigestion pattern in traditional medicine,TM2,Functional dyspepsia patterns,Traditional_Medicine,XM00,DD91.2
+DD91.2,Functional dyspepsia,MMS,Digestive system,Biomedicine,DD91,XM10A7
+XM10A8,Dyspepsia pattern in traditional medicine,TM2,Digestive disorders,Traditional_Medicine,XM00,DD91.3
+DD91.3,Functional dyspepsia with pain,MMS,Digestive system,Biomedicine,DD91,XM10A8
+XM10A9,Loss of appetite pattern in traditional medicine,TM2,Appetite disorders,Traditional_Medicine,XM00,5D10
+5D10,Loss of appetite,MMS,Endocrine system,Biomedicine,5D1,XM10A9
+XM11A0,Vomiting pattern in traditional medicine,TM2,Gastrointestinal symptoms,Traditional_Medicine,XM00,DD43
+DD43,Vomiting,MMS,Digestive system,Biomedicine,DD4,XM11A0
+XM11A1,Excessive thirst pattern in traditional medicine,TM2,Fluid balance disorders,Traditional_Medicine,XM00,5C50
+5C50,Excessive thirst,MMS,Endocrine system,Biomedicine,5C5,XM11A1
+XM11A2,Asthma pattern in traditional medicine,TM2,Chronic respiratory disorders,Traditional_Medicine,XM00,CA25
+CA25,Asthma,MMS,Respiratory system,Biomedicine,CA2,XM11A2
+XM11A3,Productive cough subtype in traditional medicine,TM2,Respiratory secretions,Traditional_Medicine,XM00,CA81
+CA81,Productive cough,MMS,Respiratory system,Biomedicine,CA8,XM11A3
+XM11A4,Dry cough subtype in traditional medicine,TM2,Non-productive cough,Traditional_Medicine,XM00,CA82
+CA82,Dry cough,MMS,Respiratory system,Biomedicine,CA8,XM11A4
+XM11A5,Hemoptysis subtype in traditional medicine,TM2,Blood in cough,Traditional_Medicine,XM00,CA83
+CA83,Hemoptysis,MMS,Respiratory system,Biomedicine,CA8,XM11A5
+XM12A0,Parasitic disease pattern in traditional medicine,TM2,Parasitic conditions,Traditional_Medicine,XM00,1F40
+1F40,Helminthiasis,MMS,Infectious diseases,Biomedicine,1F4,XM12A0
+XM12A1,Peptic ulcer pattern in traditional medicine,TM2,Peptic conditions,Traditional_Medicine,XM00,DUMMY004
+DUMMY004,Peptic ulcer placeholder,MMS,Digestive system,Biomedicine,DUMMY004,XM12A1
+XM12A2,Anal fissure pattern in traditional medicine,TM2,Anorectal conditions,Traditional_Medicine,XM00,DUMMY005
+DUMMY005,Anal fissure placeholder,MMS,Digestive system,Biomedicine,DUMMY005,XM12A2
+XM12A3,Lymphadenitis pattern in traditional medicine,TM2,Lymphatic conditions,Traditional_Medicine,XM00,DUMMY006
+DUMMY006,Lymphadenitis placeholder,MMS,Lymphatic system,Biomedicine,DUMMY006,XM12A3
+XM12A4,Urinary infection pattern in traditional medicine,TM2,Genitourinary infections,Traditional_Medicine,XM00,DUMMY007
+DUMMY007,Urinary infection placeholder,MMS,Genitourinary,Biomedicine,DUMMY007,XM12A4
+XM12A5,Migraine pattern in traditional medicine,TM2,Neurological headaches,Traditional_Medicine,XM00,DUMMY008
+DUMMY008,Migraine placeholder,MMS,Nervous system,Biomedicine,DUMMY008,XM12A5
+XM12A6,Osteoporosis pattern in traditional medicine,TM2,Bone disorders,Traditional_Medicine,XM00,DUMMY009
+DUMMY009,Osteoporosis placeholder,MMS,Skeletal system,Biomedicine,DUMMY009,XM12A6
+XM12A7,Ascites pattern in traditional medicine,TM2,Fluid accumulation,Traditional_Medicine,XM00,DB92
+DB92,Ascites,MMS,Digestive system,Biomedicine,DB9,XM12A7
+XM12A8,Arthritis pattern in traditional medicine,TM2,Joint inflammation,Traditional_Medicine,XM00,DUMMY010
+DUMMY010,Arthritis placeholder,MMS,Musculoskeletal,Biomedicine,DUMMY010,XM12A8
+XM12A9,Diabetic complication pattern in traditional medicine,TM2,Endocrine sequelae,Traditional_Medicine,XM00,DUMMY011
+DUMMY011,Diabetic complications placeholder,MMS,Endocrine system,Biomedicine,DUMMY011,XM12A9
+XM13A0,Eczema pattern in traditional medicine,TM2,Skin conditions,Traditional_Medicine,XM00,DUMMY012
+DUMMY012,Eczema placeholder,MMS,Skin conditions,Biomedicine,DUMMY012,XM13A0
+XM13A1,Leucoderma pattern in traditional medicine,TM2,Skin pigmentation,Traditional_Medicine,XM00,DUMMY013
+DUMMY013,Leucoderma placeholder,MMS,Skin conditions,Biomedicine,DUMMY013,XM13A1
+XM13A2,Smallpox pattern in traditional medicine,TM2,Viral infections,Traditional_Medicine,XM00,DUMMY014
+DUMMY014,Smallpox placeholder,MMS,Viral infections,Biomedicine,DUMMY014,XM13A2
+XM13A3,Measles pattern in traditional medicine,TM2,Viral infections,Traditional_Medicine,XM00,DUMMY015
+DUMMY015,Measles placeholder,MMS,Viral infections,Biomedicine,DUMMY015,XM13A3
+XM13A4,Pneumonia pattern in traditional medicine,TM2,Lung infections,Traditional_Medicine,XM00,DUMMY016
+DUMMY016,Pneumonia placeholder,MMS,Respiratory infections,Biomedicine,DUMMY016,XM13A4
+XM13A5,Ophthalmia pattern in traditional medicine,TM2,Eye infections,Traditional_Medicine,XM00,DUMMY017
+DUMMY017,Ophthalmia placeholder,MMS,Eye infections,Biomedicine,DUMMY017,XM13A5
+XM13A6,Inflammation pattern in traditional medicine,TM2,Inflammatory disorders,Traditional_Medicine,XM00,DUMMY018
+DUMMY018,Inflammation placeholder,MMS,General inflammation,Biomedicine,DUMMY018,XM13A6

@@ -1,0 +1,203 @@
+<%- include('partials/header', { title: 'Home', page: 'home' }) %>
+
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <div class="hero-section">
+                <h1 class="display-4 fw-bold text-primary mb-4">
+                    <i class="fas fa-exchange-alt me-3"></i>
+                    NAMASTE ↔ ICD-11 Mapping
+                </h1>
+                <p class="lead text-muted mb-4">
+                    A lightweight prototype for mapping traditional medicine codes (NAMASTE) to ICD-11 
+                    using machine learning and fuzzy matching techniques.
+                </p>
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <span class="badge bg-success fs-6">
+                        <i class="fas fa-file-csv me-1"></i>
+                        CSV-Driven
+                    </span>
+                    <span class="badge bg-info fs-6">
+                        <i class="fas fa-robot me-1"></i>
+                        ML-Powered
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="feature-icon text-primary mb-3">
+                        <i class="fas fa-search fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Search & Match</h5>
+                    <p class="card-text text-muted">
+                        Find NAMASTE codes and their ICD-11 mappings with intelligent fuzzy search
+                    </p>
+                    <a href="/search" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-right me-1"></i>
+                        Start Searching
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="feature-icon text-success mb-3">
+                        <i class="fas fa-map fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">View Mappings</h5>
+                    <p class="card-text text-muted">
+                        Browse all existing NAMASTE to ICD-11 code mappings in a comprehensive table
+                    </p>
+                    <a href="/mapping" class="btn btn-outline-success">
+                        <i class="fas fa-table me-1"></i>
+                        View Mappings
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="feature-icon text-info mb-3">
+                        <i class="fas fa-chart-bar fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">Analytics</h5>
+                    <p class="card-text text-muted">
+                        Visualize mapping statistics, confidence scores, and system performance
+                    </p>
+                    <a href="/analytics" class="btn btn-outline-info">
+                        <i class="fas fa-chart-line me-1"></i>
+                        View Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="feature-card card h-100 text-center border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="feature-icon text-warning mb-3">
+                        <i class="fas fa-robot fa-2x"></i>
+                    </div>
+                    <h5 class="card-title">ML Suggestions</h5>
+                    <p class="card-text text-muted">
+                        Get AI-powered ICD-11 suggestions for unmapped NAMASTE codes
+                    </p>
+                    <a href="/search" class="btn btn-outline-warning">
+                        <i class="fas fa-brain me-1"></i>
+                        Try ML Search
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Overview -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-info-circle me-2"></i>
+                        System Overview
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <h6 class="text-primary fw-bold">
+                                <i class="fas fa-cogs me-2"></i>
+                                Architecture
+                            </h6>
+                            <ul class="list-unstyled text-muted">
+                                <li><i class="fas fa-check text-success me-2"></i>Node.js + Express backend</li>
+                                <li><i class="fas fa-check text-success me-2"></i>EJS templating engine</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Python Flask ML service</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Bootstrap 5 frontend</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="text-success fw-bold">
+                                <i class="fas fa-database me-2"></i>
+                                Data Sources
+                            </h6>
+                            <ul class="list-unstyled text-muted">
+                                <li><i class="fas fa-file-csv text-info me-2"></i>NAMASTE codes dataset</li>
+                                <li><i class="fas fa-file-csv text-info me-2"></i>ICD-11 codes dataset</li>
+                                <li><i class="fas fa-file-csv text-info me-2"></i>Mapping relationships</li>
+                                <li><i class="fas fa-memory text-warning me-2"></i>In-memory storage</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="text-info fw-bold">
+                                <i class="fas fa-brain me-2"></i>
+                                ML Features
+                            </h6>
+                            <ul class="list-unstyled text-muted">
+                                <li><i class="fas fa-search text-primary me-2"></i>TF-IDF vectorization</li>
+                                <li><i class="fas fa-calculator text-primary me-2"></i>Cosine similarity</li>
+                                <li><i class="fas fa-lightbulb text-warning me-2"></i>Smart suggestions</li>
+                                <li><i class="fas fa-chart-line text-success me-2"></i>Confidence scoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-rocket me-2"></i>
+                        Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <a href="/" class="btn btn-outline-primary w-100" target="_blank">
+                                <i class="fas fa-heartbeat me-2"></i>
+                                Check System Health
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-info w-100" onclick="loadSampleData()">
+                                <i class="fas fa-download me-2"></i>
+                                Load Sample Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function loadSampleData() {
+    try {
+        const response = await fetch('/api/health');
+        const data = await response.json();
+        
+        alert(`System Status: ${data.status}\n\nData Counts:\n• NAMASTE: ${data.counts.namaste}\n• ICD-11: ${data.counts.icd11}\n• Mappings: ${data.counts.mappings}\n\nLast Loaded: ${data.dataLoaded}`);
+    } catch (error) {
+        alert('Error loading system data: ' + error.message);
+    }
+}
+</script>
+
+<%- include('partials/footer') %>

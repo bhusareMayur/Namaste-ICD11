@@ -1,0 +1,460 @@
+<%- include('partials/header', { title: 'Mappings', page: 'mapping' }) %>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12">
+            <!-- Page Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-primary">
+                    <i class="fas fa-map me-3"></i>
+                    NAMASTE ↔ ICD-11 Mappings
+                </h1>
+                <p class="lead text-muted">
+                    Browse all existing code mappings between traditional medicine and ICD-11
+                </p>
+            </div>
+
+            <!-- Controls -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label for="filterInput" class="form-label">Filter Mappings</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="filterInput" 
+                                placeholder="Type to filter..."
+                            >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="confidenceFilter" class="form-label">Min Confidence</label>
+                            <select class="form-select" id="confidenceFilter">
+                                <option value="0">All (0%+)</option>
+                                <option value="0.5">Good (50%+)</option>
+                                <option value="0.7">High (70%+)</option>
+                                <option value="0.9">Excellent (90%+)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="mappingTypeFilter" class="form-label">Mapping Type</label>
+                            <select class="form-select" id="mappingTypeFilter">
+                                <option value="">All Types</option>
+                                <option value="Exact">Exact</option>
+                                <option value="Approximate">Approximate</option>
+                                <option value="Partial">Partial</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">
+                                <i class="fas fa-eraser me-1"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-3 text-muted">Loading mapping data...</p>
+            </div>
+
+            <!-- Statistics -->
+            <div id="statsCards" class="row g-3 mb-4" style="display: none;">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body text-center">
+                            <h3 id="totalMappings" class="mb-1">-</h3>
+                            <p class="mb-0 small">Total Mappings</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body text-center">
+                            <h3 id="highConfidence" class="mb-1">-</h3>
+                            <p class="mb-0 small">High Confidence (70%+)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body text-center">
+                            <h3 id="avgConfidence" class="mb-1">-</h3>
+                            <p class="mb-0 small">Avg Confidence</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-dark">
+                        <div class="card-body text-center">
+                            <h3 id="filteredCount" class="mb-1">-</h3>
+                            <p class="mb-0 small">Filtered Results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mappings Table -->
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-table me-2"></i>
+                        Mapping Details
+                    </h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="mappingsTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>NAMASTE Code</th>
+                                    <th>Traditional Term</th>
+                                    <th>English Translation</th>
+                                    <th>ICD-11 TM2</th>
+                                    <th>ICD-11 Biomedicine</th>
+                                    <th>Type</th>
+                                    <th>Confidence</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mappingsTableBody">
+                                <!-- Table rows will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted" id="resultCount">
+                            Showing 0 of 0 mappings
+                        </small>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm" onclick="exportMappings()">
+                                <i class="fas fa-download me-1"></i>
+                                Export JSON
+                            </button>
+                            <button class="btn btn-outline-success btn-sm" onclick="refreshData()">
+                                <i class="fas fa-refresh me-1"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Detailed View -->
+<div class="modal fade" id="mappingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Mapping Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let allMappings = [];
+let namasteData = [];
+let icd11Data = [];
+let filteredMappings = [];
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadAllData();
+    
+    // Setup filter event listeners
+    document.getElementById('filterInput').addEventListener('input', applyFilters);
+    document.getElementById('confidenceFilter').addEventListener('change', applyFilters);
+    document.getElementById('mappingTypeFilter').addEventListener('change', applyFilters);
+});
+
+async function loadAllData() {
+    try {
+        // Load all datasets
+        const [mappingsResponse, namasteResponse, icd11Response] = await Promise.all([
+            fetch('/api/mappings'),
+            fetch('/api/namaste'),
+            fetch('/api/icd11')
+        ]);
+
+        const [mappingsData, namasteDataRes, icd11DataRes] = await Promise.all([
+            mappingsResponse.json(),
+            namasteResponse.json(),
+            icd11Response.json()
+        ]);
+
+        allMappings = mappingsData.data || [];
+        namasteData = namasteDataRes.data || [];
+        icd11Data = icd11DataRes.data || [];
+
+        // Hide loading and show content
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('statsCards').style.display = 'flex';
+
+        // Apply initial filters and display
+        applyFilters();
+        updateStats();
+
+    } catch (error) {
+        console.error('Error loading data:', error);
+        showError('Failed to load mapping data. Please refresh the page.');
+    }
+}
+
+function applyFilters() {
+    const filterText = document.getElementById('filterInput').value.toLowerCase();
+    const minConfidence = parseFloat(document.getElementById('confidenceFilter').value);
+    const mappingType = document.getElementById('mappingTypeFilter').value;
+
+    filteredMappings = allMappings.filter(mapping => {
+        // Text filter
+        const namasteEntry = namasteData.find(n => n.NAMASTE_Code === mapping.NAMASTE_Code);
+        const searchText = `${mapping.NAMASTE_Code} ${namasteEntry?.Traditional_Term || ''} ${namasteEntry?.English_Translation || ''} ${mapping.ICD11_TM2_Code} ${mapping.ICD11_Biomedicine_Code}`.toLowerCase();
+        
+        const matchesText = !filterText || searchText.includes(filterText);
+
+        // Confidence filter
+        const confidence = parseFloat(mapping.Confidence_Score);
+        const matchesConfidence = confidence >= minConfidence;
+
+        // Type filter
+        const matchesType = !mappingType || mapping.Mapping_Type === mappingType;
+
+        return matchesText && matchesConfidence && matchesType;
+    });
+
+    displayMappings();
+    updateFilterStats();
+}
+
+function displayMappings() {
+    const tbody = document.getElementById('mappingsTableBody');
+    
+    if (filteredMappings.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="8" class="text-center py-4 text-muted">
+                    <i class="fas fa-search fa-2x mb-2 d-block"></i>
+                    No mappings match your filters
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    let html = '';
+    filteredMappings.forEach(mapping => {
+        const namasteEntry = namasteData.find(n => n.NAMASTE_Code === mapping.NAMASTE_Code);
+        const icd11TM2 = icd11Data.find(i => i.ICD11_Code === mapping.ICD11_TM2_Code);
+        const icd11Bio = icd11Data.find(i => i.ICD11_Code === mapping.ICD11_Biomedicine_Code);
+        
+        const confidence = parseFloat(mapping.Confidence_Score);
+        const confidenceBadge = getConfidenceBadge(confidence);
+        const typeBadge = getTypeBadge(mapping.Mapping_Type);
+
+        html += `
+            <tr>
+                <td>
+                    <code class="text-primary">${mapping.NAMASTE_Code}</code>
+                </td>
+                <td>
+                    <strong>${namasteEntry?.Traditional_Term || 'N/A'}</strong>
+                    <br><small class="text-muted">${namasteEntry?.Medical_System || ''}</small>
+                </td>
+                <td>${namasteEntry?.English_Translation || 'N/A'}</td>
+                <td>
+                    <code class="text-info">${mapping.ICD11_TM2_Code}</code>
+                    <br><small class="text-muted">${icd11TM2?.Title || 'Not found'}</small>
+                </td>
+                <td>
+                    <code class="text-success">${mapping.ICD11_Biomedicine_Code}</code>
+                    <br><small class="text-muted">${icd11Bio?.Title || 'Not found'}</small>
+                </td>
+                <td>${typeBadge}</td>
+                <td>${confidenceBadge}</td>
+                <td>
+                    <button class="btn btn-outline-primary btn-sm" onclick="showMappingDetails('${mapping.NAMASTE_Code}')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+
+    tbody.innerHTML = html;
+    document.getElementById('resultCount').textContent = 
+        `Showing ${filteredMappings.length} of ${allMappings.length} mappings`;
+}
+
+function getConfidenceBadge(confidence) {
+    const percent = (confidence * 100).toFixed(0);
+    if (confidence >= 0.9) {
+        return `<span class="badge bg-success">${percent}%</span>`;
+    } else if (confidence >= 0.7) {
+        return `<span class="badge bg-info">${percent}%</span>`;
+    } else if (confidence >= 0.5) {
+        return `<span class="badge bg-warning">${percent}%</span>`;
+    } else {
+        return `<span class="badge bg-danger">${percent}%</span>`;
+    }
+}
+
+function getTypeBadge(type) {
+    switch (type) {
+        case 'Exact':
+            return `<span class="badge bg-success">${type}</span>`;
+        case 'Approximate':
+            return `<span class="badge bg-warning">${type}</span>`;
+        case 'Partial':
+            return `<span class="badge bg-info">${type}</span>`;
+        default:
+            return `<span class="badge bg-secondary">${type}</span>`;
+    }
+}
+
+function updateStats() {
+    const total = allMappings.length;
+    const highConf = allMappings.filter(m => parseFloat(m.Confidence_Score) >= 0.7).length;
+    const avgConf = allMappings.reduce((sum, m) => sum + parseFloat(m.Confidence_Score), 0) / total;
+
+    document.getElementById('totalMappings').textContent = total;
+    document.getElementById('highConfidence').textContent = highConf;
+    document.getElementById('avgConfidence').textContent = `${(avgConf * 100).toFixed(0)}%`;
+}
+
+function updateFilterStats() {
+    document.getElementById('filteredCount').textContent = filteredMappings.length;
+}
+
+function clearFilters() {
+    document.getElementById('filterInput').value = '';
+    document.getElementById('confidenceFilter').value = '0';
+    document.getElementById('mappingTypeFilter').value = '';
+    applyFilters();
+}
+
+async function showMappingDetails(namasteCode) {
+    try {
+        const response = await fetch(`/api/map/${namasteCode}`);
+        const data = await response.json();
+        
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = generateMappingDetailsHTML(data);
+        
+        const modal = new bootstrap.Modal(document.getElementById('mappingModal'));
+        modal.show();
+        
+    } catch (error) {
+        console.error('Error loading mapping details:', error);
+        alert('Failed to load mapping details.');
+    }
+}
+
+function generateMappingDetailsHTML(data) {
+    return `
+        <div class="row">
+            <div class="col-md-6">
+                <h6 class="text-primary fw-bold">
+                    <i class="fas fa-leaf me-2"></i>
+                    NAMASTE Details
+                </h6>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <p><strong>Code:</strong> <code>${data.namasteEntry.NAMASTE_Code}</code></p>
+                        <p><strong>Traditional Term:</strong> ${data.namasteEntry.Traditional_Term}</p>
+                        <p><strong>English:</strong> ${data.namasteEntry.English_Translation}</p>
+                        <p><strong>Medical System:</strong> ${data.namasteEntry.Medical_System}</p>
+                        <p class="mb-0"><strong>Category:</strong> ${data.namasteEntry.Category}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-info fw-bold">
+                    <i class="fas fa-hospital me-2"></i>
+                    ICD-11 Mappings
+                </h6>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Traditional Medicine Module:</strong><br>
+                            <code>${data.mapping.ICD11_TM2_Code}</code><br>
+                            <small class="text-muted">${data.icd11Entries.traditional?.Title || 'Not found'}</small>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Biomedicine Module:</strong><br>
+                            <code>${data.mapping.ICD11_Biomedicine_Code}</code><br>
+                            <small class="text-muted">${data.icd11Entries.biomedicine?.Title || 'Not found'}</small>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span><strong>Type:</strong> ${getTypeBadge(data.mapping.Mapping_Type)}</span>
+                            <span><strong>Confidence:</strong> ${getConfidenceBadge(parseFloat(data.mapping.Confidence_Score))}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function exportMappings() {
+    const dataToExport = {
+        metadata: {
+            exportedAt: new Date().toISOString(),
+            totalMappings: allMappings.length,
+            filteredMappings: filteredMappings.length,
+            filters: {
+                text: document.getElementById('filterInput').value,
+                minConfidence: document.getElementById('confidenceFilter').value,
+                mappingType: document.getElementById('mappingTypeFilter').value
+            }
+        },
+        mappings: filteredMappings
+    };
+    
+    const blob = new Blob([JSON.stringify(dataToExport, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `namaste-icd11-mappings-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+async function refreshData() {
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('statsCards').style.display = 'none';
+    await loadAllData();
+}
+
+function showError(message) {
+    document.getElementById('loadingState').innerHTML = `
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Error:</strong> ${message}
+        </div>
+    `;
+}
+</script>
+
+<%- include('partials/footer') %>

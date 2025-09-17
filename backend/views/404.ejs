@@ -1,0 +1,83 @@
+<%- include('partials/header', { title: '404 - Not Found', page: '404' }) %>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="error-page">
+                <div class="error-code mb-4">
+                    <h1 class="display-1 text-primary fw-bold">404</h1>
+                </div>
+                
+                <div class="error-message mb-4">
+                    <h2 class="h3 text-dark mb-3">
+                        <i class="fas fa-search me-2"></i>
+                        Page Not Found
+                    </h2>
+                    <p class="text-muted mb-4">
+                        The page you're looking for doesn't exist or has been moved.
+                        Let's get you back on track.
+                    </p>
+                </div>
+
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-home me-2"></i>
+                        Go Home
+                    </a>
+                    <a href="/search" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-search me-2"></i>
+                        Search Codes
+                    </a>
+                </div>
+
+                <div class="mt-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="fas fa-compass me-2"></i>
+                                Quick Navigation
+                            </h5>
+                            <div class="row g-3 mt-3">
+                                <div class="col-md-4">
+                                    <a href="/search" class="text-decoration-none">
+                                        <div class="d-flex align-items-center text-primary">
+                                            <i class="fas fa-search fa-lg me-3"></i>
+                                            <div>
+                                                <strong>Search</strong><br>
+                                                <small class="text-muted">Find and map codes</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="/mapping" class="text-decoration-none">
+                                        <div class="d-flex align-items-center text-success">
+                                            <i class="fas fa-map fa-lg me-3"></i>
+                                            <div>
+                                                <strong>Mappings</strong><br>
+                                                <small class="text-muted">View all mappings</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="/analytics" class="text-decoration-none">
+                                        <div class="d-flex align-items-center text-info">
+                                            <i class="fas fa-chart-bar fa-lg me-3"></i>
+                                            <div>
+                                                <strong>Analytics</strong><br>
+                                                <small class="text-muted">View statistics</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

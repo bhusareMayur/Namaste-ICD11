@@ -1,0 +1,101 @@
+NAMASTE_Code,Traditional_Term,English_Translation,Medical_System,Category
+NAMASTE_AY_001,Jwara,Fever,Ayurveda,General fever conditions
+NAMASTE_AY_002,Kasa,Cough,Ayurveda,Respiratory disorders
+NAMASTE_AY_003,Shwasa,Dyspnea,Ayurveda,Breathing difficulties
+NAMASTE_AY_004,Amlapitta,Acid Peptic Disease,Ayurveda,Digestive disorders
+NAMASTE_AY_005,Grahani,Irritable Bowel Syndrome,Ayurveda,Intestinal disorders
+NAMASTE_AY_006,Arsha,Hemorrhoids,Ayurveda,Anorectal disorders
+NAMASTE_AY_007,Prameha,Diabetes Mellitus,Ayurveda,Metabolic disorders
+NAMASTE_AY_008,Hridroga,Heart Disease,Ayurveda,Cardiovascular disorders
+NAMASTE_AY_009,Shirahshula,Headache,Ayurveda,Neurological disorders
+NAMASTE_AY_010,Sandhivata,Osteoarthritis,Ayurveda,Joint disorders
+NAMASTE_AY_011,Amavata,Rheumatoid Arthritis,Ayurveda,Autoimmune disorders
+NAMASTE_AY_012,Yakritpleehodara,Hepatosplenomegaly,Ayurveda,Liver-spleen disorders
+NAMASTE_AY_013,Mutraghata,Urinary Retention,Ayurveda,Urinary disorders
+NAMASTE_AY_014,Pradara,Menorrhagia,Ayurveda,Gynecological disorders
+NAMASTE_AY_015,Yonivyapad,Vaginal Disorders,Ayurveda,Female reproductive disorders
+NAMASTE_AY_016,Klaibya,Erectile Dysfunction,Ayurveda,Male reproductive disorders
+NAMASTE_AY_017,Kushtha,Skin Diseases,Ayurveda,Dermatological disorders
+NAMASTE_AY_018,Netrarogas,Eye Diseases,Ayurveda,Ophthalmological disorders
+NAMASTE_AY_019,Karnarogas,Ear Diseases,Ayurveda,Otological disorders
+NAMASTE_AY_020,Unmada,Psychosis,Ayurveda,Psychiatric disorders
+NAMASTE_AY_021,Apasmara,Epilepsy,Ayurveda,Neurological disorders
+NAMASTE_AY_022,Pakshaghata,Hemiplegia,Ayurveda,Neurological disorders
+NAMASTE_AY_023,Kampavata,Parkinson's Disease,Ayurveda,Movement disorders
+NAMASTE_AY_024,Madhumeha,Type 2 Diabetes,Ayurveda,Endocrine disorders
+NAMASTE_AY_025,Sthaulya,Obesity,Ayurveda,Metabolic disorders
+NAMASTE_AY_026,Karshya,Underweight,Ayurveda,Nutritional disorders
+NAMASTE_AY_027,Raktapitta,Bleeding Disorders,Ayurveda,Hematological disorders
+NAMASTE_AY_028,Pandu,Anemia,Ayurveda,Blood disorders
+NAMASTE_AY_029,Kamala,Jaundice,Ayurveda,Hepatic disorders
+NAMASTE_AY_030,Udararoga,Abdominal Diseases,Ayurveda,Gastrointestinal disorders
+NAMASTE_AY_031,Atisara,Diarrhea,Ayurveda,Intestinal disorders
+NAMASTE_AY_032,Vibandha,Constipation,Ayurveda,Bowel disorders
+NAMASTE_AY_033,Gulma,Abdominal Tumor,Ayurveda,Abdominal masses
+NAMASTE_AY_034,Udavarta,Flatulence,Ayurveda,Digestive gas disorders
+NAMASTE_AY_035,Hikka,Hiccup,Ayurveda,Respiratory reflex disorders
+NAMASTE_AY_036,Rajayakshma,Tuberculosis,Ayurveda,Chronic respiratory infections
+NAMASTE_AY_037,Kshaya,Wasting Disease,Ayurveda,Degenerative disorders
+NAMASTE_AY_038,Shopha,Edema,Ayurveda,Fluid retention disorders
+NAMASTE_AY_039,Vatarakta,Gout,Ayurveda,Crystal arthropathy
+NAMASTE_AY_040,Gridhrasi,Sciatica,Ayurveda,Nerve compression disorders
+NAMASTE_AY_041,Vishuchika,Cholera,Ayurveda,Acute diarrheal diseases
+NAMASTE_AY_042,Alasaka,Indigestion,Ayurveda,Digestive dysfunction
+NAMASTE_AY_043,Ajirna,Dyspepsia,Ayurveda,Digestive disorders
+NAMASTE_AY_044,Aruchi,Loss of Appetite,Ayurveda,Appetite disorders
+NAMASTE_AY_045,Chhardi,Vomiting,Ayurveda,Gastrointestinal symptoms
+NAMASTE_AY_046,Trishna,Excessive Thirst,Ayurveda,Fluid balance disorders
+NAMASTE_AY_047,Swasa,Asthma,Ayurveda,Chronic respiratory disorders
+NAMASTE_AY_048,Kaphaja Kasa,Productive Cough,Ayurveda,Respiratory secretions
+NAMASTE_AY_049,Vataja Kasa,Dry Cough,Ayurveda,Non-productive cough
+NAMASTE_AY_050,Pittaja Kasa,Hemoptysis,Ayurveda,Blood in cough
+NAMASTE_SI_001,Suram,Fever,Siddha,Pyretic conditions
+NAMASTE_SI_002,Irumal,Cough,Siddha,Respiratory ailments
+NAMASTE_SI_003,Moolam,Hemorrhoids,Siddha,Anorectal diseases
+NAMASTE_SI_004,Neerkozhuppu,Diabetes,Siddha,Endocrine disorders
+NAMASTE_SI_005,Vayu,Rheumatism,Siddha,Rheumatic conditions
+NAMASTE_SI_006,Kalladaippu,Renal Calculi,Siddha,Urological disorders
+NAMASTE_SI_007,Vellai,Leucorrhoea,Siddha,Gynecological conditions
+NAMASTE_SI_008,Kamalai,Jaundice,Siddha,Hepatic disorders
+NAMASTE_SI_009,Kirimikkozhuppu,Helminthiasis,Siddha,Parasitic diseases
+NAMASTE_SI_010,Thalainokku,Headache,Siddha,Cephalic disorders
+NAMASTE_SI_011,Gunmam,Peptic Ulcer,Siddha,Gastric disorders
+NAMASTE_SI_012,Sirummool,Anal Fissure,Siddha,Anorectal conditions
+NAMASTE_SI_013,Kazhichal,Diarrhea,Siddha,Intestinal disorders
+NAMASTE_SI_014,Malakkaduppu,Constipation,Siddha,Bowel disorders
+NAMASTE_SI_015,Kiranthi,Skin Diseases,Siddha,Dermatological conditions
+NAMASTE_SI_016,Kandamaalai,Lymphadenitis,Siddha,Lymphatic disorders
+NAMASTE_SI_017,Gunmakkazhichal,IBS,Siddha,Functional bowel disorders
+NAMASTE_SI_018,Neerkatti,Urinary Infection,Siddha,Genitourinary infections
+NAMASTE_SI_019,Vairalekam,Migraine,Siddha,Neurological headaches
+NAMASTE_SI_020,Asthimoolam,Osteoporosis,Siddha,Bone disorders
+NAMASTE_SI_021,Iranokku,Dyspnea,Siddha,Respiratory symptoms
+NAMASTE_SI_022,Manneerkozhuppu,Ascites,Siddha,Fluid accumulation
+NAMASTE_SI_023,Kiranthivayu,Arthritis,Siddha,Joint inflammation
+NAMASTE_SI_024,Mehapadanam,Diabetic Complications,Siddha,Diabetic sequelae
+NAMASTE_SI_025,Karappai,Eczema,Siddha,Chronic skin conditions
+NAMASTE_UN_001,Humma,Fever,Unani,Febrile conditions
+NAMASTE_UN_002,Sual,Cough,Unani,Respiratory disorders
+NAMASTE_UN_003,Zeequnnafs,Dyspnea,Unani,Breathing disorders
+NAMASTE_UN_004,Humuzat,Hyperacidity,Unani,Gastric disorders
+NAMASTE_UN_005,Ishaal,Diarrhea,Unani,Intestinal disorders
+NAMASTE_UN_006,Bawaseer,Hemorrhoids,Unani,Anorectal conditions
+NAMASTE_UN_007,Ziabetus,Diabetes,Unani,Metabolic disorders
+NAMASTE_UN_008,Amraze Qalb,Heart Disease,Unani,Cardiac disorders
+NAMASTE_UN_009,Sudaa,Headache,Unani,Neurological conditions
+NAMASTE_UN_010,Waja ul Mafasil,Joint Pain,Unani,Arthritic conditions
+NAMASTE_UN_011,Yarqan,Jaundice,Unani,Hepatic disorders
+NAMASTE_UN_012,Qubz,Constipation,Unani,Bowel disorders
+NAMASTE_UN_013,Sara,Epilepsy,Unani,Neurological seizures
+NAMASTE_UN_014,Falij,Paralysis,Unani,Motor disorders
+NAMASTE_UN_015,Rasha,Tremor,Unani,Movement disorders
+NAMASTE_UN_016,Baras,Leucoderma,Unani,Pigmentation disorders
+NAMASTE_UN_017,Chechak,Smallpox,Unani,Viral infections
+NAMASTE_UN_018,Hasba,Measles,Unani,Childhood infections
+NAMASTE_UN_019,Diq,Tuberculosis,Unani,Chronic infections
+NAMASTE_UN_020,Waram,Inflammation,Unani,Inflammatory conditions
+NAMASTE_UN_021,Sil,Pneumonia,Unani,Lung infections
+NAMASTE_UN_022,Ramad,Ophthalmia,Unani,Eye infections
+NAMASTE_UN_023,Amraze Uzn,Ear Diseases,Unani,Otological conditions
+NAMASTE_UN_024,Saman,Obesity,Unani,Weight disorders
+NAMASTE_UN_025,Hazal,Emaciation,Unani,Wasting conditions
