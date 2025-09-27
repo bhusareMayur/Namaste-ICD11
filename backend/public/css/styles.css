@@ -20,6 +20,20 @@ body {
   line-height: 1.6;
 }
 
+/* Remove Google logo if needed */
+/* Google Translate Logo Hide */
+.goog-logo-link,
+.goog-te-gadget span {
+    display: none !important;
+}
+
+/* Translate Dropdown (button) दिसत राहील */
+.goog-te-gadget {
+    font-size: 14px;
+    color: #000;
+}
+
+
 /* Header and Navigation */
 .navbar-brand {
   font-size: 1.5rem;
