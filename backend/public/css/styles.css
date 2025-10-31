@@ -21,13 +21,13 @@ body {
 }
 
 /* Remove Google logo if needed */
-/* Google Translate Logo Hide */
+
 .goog-logo-link,
 .goog-te-gadget span {
     display: none !important;
 }
 
-/* Translate Dropdown (button) दिसत राहील */
+/* Translate Dropdown (button)*/
 .goog-te-gadget {
     font-size: 14px;
     color: #000;
