@@ -1,7 +1,19 @@
-# NAMASTE ↔ ICD-11 Mapping Prototype
+# 🌿 NAMASTE ↔ ICD-11 Mapping Prototype
 
-A lightweight prototype system for mapping traditional medicine codes (NAMASTE) to ICD-11 using machine learning and CSV-driven data storage.
+A fully functional platform for mapping **Traditional Medicine (NAMASTE)** codes to **ICD-11**, integrating **machine learning**, **FHIR standards**, and a **CSV-driven architecture**.  
+This system bridges the gap between ancient medical knowledge and modern digital healthcare interoperability.  
 
+🔗 **Live Platform:** [https://namaste-icd11.onrender.com/](https://namaste-icd11.onrender.com/)
+
+
+---
+
+## 🚀 Overview  
+
+The NAMASTE ↔ ICD-11 Mapping Platform provides intelligent code mapping, FHIR resource generation, and ML-based suggestions for unmapped traditional medicine codes.  
+Built using **Node.js (Express)** for backend, **Flask (Python)** for machine learning, and **EJS + Bootstrap + Chart.js** for the web interface.  
+
+---
 ## Prerequisites
 
 - **Node.js 16+** and npm
@@ -12,23 +24,23 @@ A lightweight prototype system for mapping traditional medicine codes (NAMASTE) 
 
 ```
 namaste-icd11-mapping/
-├── datasets/                    # CSV data files
-│   ├── icd11_100_dataset.csv
-│   ├── namaste_100_dataset.csv
-│   └── namaste_icd11_100_mapping.csv
-├── backend/                     # Node.js Express server
-│   ├── server.js
-│   ├── routes/api.js
-│   ├── utils/csvLoader.js
-│   ├── views/                   # EJS templates
-│   └── public/                  # Static assets
-├── ml/                          # Python ML microservice
-│   ├── app.py
-│   ├── model_training.py
-│   ├── requirements.txt
-│   └── models/                  # Trained models (generated)
+├── datasets/ # CSV data files (currently 100 records)
+│ ├── icd11_100_dataset.csv
+│ ├── namaste_100_dataset.csv
+│ └── namaste_icd11_100_mapping.csv
+├── backend/ # Node.js Express backend
+│ ├── server.js
+│ ├── routes/api.js
+│ ├── utils/csvLoader.js
+│ ├── views/ # EJS templates
+│ └── public/ # Static assets (CSS, JS)
+├── ml/ # Python ML microservice
+│ ├── app.py
+│ ├── model_training.py
+│ ├── requirements.txt
+│ └── models/ # Trained models (auto-generated)
 ├── package.json
-└── redme.md
+└── README.md
 ```
 
 ## Installation
@@ -93,13 +105,6 @@ curl -X POST http://localhost:3000/api/generate-fhir \
   -d '{"patientId":"P001","namasteCode":"NAMASTE_AY_001","clinician":"Dr. XYZ"}'
 ```
 
-## Notes
-
-- This prototype uses CSV files only; no DB connection required
-- To add more data, drop additional CSVs into `/datasets` (same schema)
-- If you want Dockerization later, instructions will be provided
-- The ML service trains automatically on startup using the provided CSV data
-
 ## Features
 
 - **Search & Autocomplete**: Fuzzy search with intelligent suggestions
@@ -107,18 +112,19 @@ curl -X POST http://localhost:3000/api/generate-fhir \
 - **ML Suggestions**: TF-IDF + cosine similarity for unmapped codes
 - **FHIR Generation**: Create FHIR Condition resources with mappings
 - **Analytics Dashboard**: Visualize mapping statistics and performance
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Responsive UI**: Works on desktop, tablet, and mobile devices
 
 ## System Architecture
 
 - **Frontend**: EJS templates + Bootstrap CSS + Chart.js
 - **Backend**: Node.js + Express.js (CSV data in memory)
 - **ML Service**: Python Flask + scikit-learn (TF-IDF vectors)
-- **Data Storage**: CSV files (no database required)
+- **Data Layer**: CSV-based (currently 100 records)
+- **Planned Upgrade**: MongoDB integration for scaling to 4500+ records
 
 ## Development
 
-For development with auto-reload:
+For live reloading during development:
 
 ```bash
 npm run dev  # Uses nodemon for backend
@@ -132,3 +138,20 @@ cd ml && python app.py  # ML service
 2. **CSV Loading Errors**: Check that all CSV files exist in `/datasets` directory
 3. **Port Conflicts**: Change ports in server.js and ml/app.py if needed
 4. **Dependencies**: Run `npm install` and `pip install -r requirements.txt` if modules are missing
+ 
+## Future Enhancements
+1. MongoDB integration for handling large-scale datasets (4500+ records)
+2. Dockerization for unified deployment
+3. Authentication & Admin Panel for secure access
+4. Confidence Scoring & Model Evaluation Metrics
+
+## License
+This project is open-source and free to use for research and development purposes.
+ 
+## Author
+**Mayur Bhusare**
+Full Stack Developer | Machine Learning Enthusiast
+📍 Pune
+🌐 Live Demo: https://namaste-icd11.onrender.com/
+💼 LinkedIn: https://www.linkedin.com/in/mayur-bhusare
+📧 Email: mayurbhusare8262@gmail.com
