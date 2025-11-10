@@ -1,4 +1,4 @@
-# 🌿 NAMASTE ↔ ICD-11 Mapping Prototype
+# 🌿 NAMASTE ↔ ICD-11 Mapping Platform  
 
 A fully functional platform for mapping **Traditional Medicine (NAMASTE)** codes to **ICD-11**, integrating **machine learning**, **FHIR standards**, and a **CSV-driven architecture**.  
 This system bridges the gap between ancient medical knowledge and modern digital healthcare interoperability.  
