@@ -149,9 +149,9 @@ cd ml && python app.py  # ML service
 This project is open-source and free to use for research and development purposes.
  
 ## Author
-**Mayur Bhusare**
-Full Stack Developer | Machine Learning Enthusiast
-📍 Pune
-🌐 Live Demo: https://namaste-icd11.onrender.com/
-💼 LinkedIn: https://www.linkedin.com/in/mayur-bhusare
-📧 Email: mayurbhusare8262@gmail.com
+**Mayur Bhusare**<br><br>
+Full Stack Developer | Machine Learning Enthusiast<br>
+📍 Pune<br>
+🌐 Live Demo: https://namaste-icd11.onrender.com/<br>
+💼 LinkedIn: https://www.linkedin.com/in/mayur-bhusare<br>
+📧 Email: mayurbhusare8262@gmail.com<br>
